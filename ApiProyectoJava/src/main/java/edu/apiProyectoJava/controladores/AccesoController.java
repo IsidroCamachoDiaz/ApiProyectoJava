@@ -12,7 +12,7 @@ import edu.apiProyectoJava.bean.Acceso;
 /**
  * Clase que controla las opciones de API y la comunicacion a la base de datos para los Accesos
  * 
- * @author El Equipazo de los Lentos
+ * @author Isidro Camacho Diaz
  * 
  * @param AccesoServicio Almacenara el acceso Al Servidor
  */

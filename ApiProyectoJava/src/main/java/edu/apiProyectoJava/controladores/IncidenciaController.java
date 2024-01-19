@@ -72,13 +72,14 @@ public class IncidenciaController {
 	public void actualizarIncidencia(@RequestBody Incidencia incidencia, @PathVariable("id") Long id) {
 	    Incidencia incidenciaObtenida = incidenciaRepositorio.findById(id).get();
 	    incidenciaObtenida.setCoste(incidencia.getCoste());
-	    incidenciaObtenida.setDescripcion(incidencia.getDescripcion());
 	    incidenciaObtenida.setEmpleado(incidencia.getEmpleado());
 	    incidenciaObtenida.setFecha_fin(incidencia.getFecha_fin());
 	    incidenciaObtenida.setFecha_inicio(incidencia.getFecha_inicio());
 	    incidenciaObtenida.setHoras(incidencia.getHoras());
 	    incidenciaObtenida.setSolicitud(incidencia.getSolicitud());
-	    incidenciaObtenida.setTipo(incidencia.getTipo());
+	    incidenciaObtenida.setDescripcion_tecnica(incidencia.getDescripcion_tecnica());
+	    incidenciaObtenida.setDescripcion_usuario(incidencia.getDescripcion_usuario());
+	    incidenciaObtenida.setEstado(incidencia.isEstado());
 	    incidenciaRepositorio.save(incidenciaObtenida);
 	}
 

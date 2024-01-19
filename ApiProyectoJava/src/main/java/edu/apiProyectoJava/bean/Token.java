@@ -16,7 +16,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name="tokens")
+@Table(name="tokens",schema="datos_puros")
 public class Token {
 	
 	// ATRIBUTOS

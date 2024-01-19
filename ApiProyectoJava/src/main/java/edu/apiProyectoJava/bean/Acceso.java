@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
  * @param usuariosConAcceso Usuario y su Acceso respectivo
  */
 @Entity
-@Table(name="accesos")
+@Table(name="accesos",schema="datos_puros")
 public class Acceso {
 	
 	//ATRIBUTOS

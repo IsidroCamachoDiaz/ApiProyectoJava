@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -29,6 +30,9 @@ public class Solicitud {
 	@Column(name="descripcion_solicitud",nullable=false)
 	private String descripcion;
 	
+	@Column(name="estado",nullable=false)
+	private boolean estado;
+	
 	@Column(name="fecha_limite")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fch_limite;
@@ -37,8 +41,9 @@ public class Solicitud {
 	@JoinColumn(name="id_usuario")
 	private Usuario usuario_solicitud;
 	
-	@OneToMany(mappedBy="solicitud")
-	private List <Incidencia> incidencias_solicitud;
+	@OneToOne(mappedBy="solicitud")
+	@JoinColumn(name="id_incidencia")
+	private Incidencia incidencia;
 
 	//Geters y Seters
 	public long getId_solicitud() {
@@ -65,24 +70,36 @@ public class Solicitud {
 		this.fch_limite = fch_limite;
 	}
 	
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+	
 	//Constructores
-
-	public Solicitud(long id_solicitud, String descripcion, Calendar fch_limite) {
-		super();
-		this.id_solicitud = id_solicitud;
-		this.descripcion = descripcion;
-		this.fch_limite = fch_limite;
-	}
-
-	public Solicitud(String descripcion, Calendar fch_limite) {
-		super();
-		this.descripcion = descripcion;
-		this.fch_limite = fch_limite;
-	}
 
 	public Solicitud() {
 		super();
 	}
+
+	public Solicitud(long id_solicitud, String descripcion, boolean estado, Calendar fch_limite) {
+		super();
+		this.id_solicitud = id_solicitud;
+		this.descripcion = descripcion;
+		this.estado = estado;
+		this.fch_limite = fch_limite;
+	}
+
+	public Solicitud(String descripcion, boolean estado, Calendar fch_limite) {
+		super();
+		this.descripcion = descripcion;
+		this.estado = estado;
+		this.fch_limite = fch_limite;
+	}
+	
+	
 	
 
 	

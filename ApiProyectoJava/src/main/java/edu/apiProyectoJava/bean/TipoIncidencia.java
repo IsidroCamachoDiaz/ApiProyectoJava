@@ -14,7 +14,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name="tipos_incidencias")
+@Table(name="tipos_incidencias",schema="personal_datos")
 public class TipoIncidencia {
 	
 	//Atributos
@@ -34,8 +34,8 @@ public class TipoIncidencia {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fecha_fin;
 	
-	@OneToMany(mappedBy="tipo")
-	private List <Incidencia> incidencias_tipo;
+	@OneToMany(mappedBy="tipoIncidencia")
+	private List <Trabajo> trabajosConTipo;
 	
 	//Geteres y Seters
 	

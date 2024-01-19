@@ -1,6 +1,7 @@
 package edu.apiProyectoJava.bean;
 
 import java.util.Calendar;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -24,14 +27,20 @@ public class Incidencia {
 	@Column(name="id_incidencia",nullable=false)
 	private long id_incidencia;
 	
-	@Column(name="descripcion_incidencia",nullable=false)
-	private String descripcion;
+	@Column(name="descripcion_usuario",nullable=false)
+	private String descripcion_usuario;
 	
-	@Column(name="horas_incidencia",nullable=false)
+	@Column(name="descripcion_tecnica")
+	private String descripcion_tecnica;
+	
+	@Column(name="horas_incidencia")
 	private int horas;
 	
-	@Column(name="coste_incidencia",nullable=false)
+	@Column(name="coste_incidencia")
 	private float coste;
+	
+	@Column(name="estado_incidencia",nullable=false)
+	private boolean estado;
 	
 	@Column(name="fecha_inicio")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -45,13 +54,12 @@ public class Incidencia {
 	@JoinColumn(name="id_usuario")
 	private Usuario empleado;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="id_solicitud")
 	private Solicitud solicitud;
 	
-	@ManyToOne
-	@JoinColumn(name="id_tipo_incidencia")
-	private TipoIncidencia tipo;
+	 @OneToMany(mappedBy="incidencia")
+	 List<Trabajo> trabajosConIncidencias;   
 
 	//Geters y Seters
 	
@@ -63,13 +71,7 @@ public class Incidencia {
 		this.id_incidencia = id_incidencia;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
-	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
 
 	public int getHoras() {
 		return horas;
@@ -118,46 +120,69 @@ public class Incidencia {
 	public void setSolicitud(Solicitud solicitud) {
 		this.solicitud = solicitud;
 	}
-
-	public TipoIncidencia getTipo() {
-		return tipo;
+	public String getDescripcion_usuario() {
+		return descripcion_usuario;
 	}
 
-	public void setTipo(TipoIncidencia tipo) {
-		this.tipo = tipo;
+	public void setDescripcion_usuario(String descripcion_usuario) {
+		this.descripcion_usuario = descripcion_usuario;
 	}
+
+	public String getDescripcion_tecnica() {
+		return descripcion_tecnica;
+	}
+
+	public void setDescripcion_tecnica(String descripcion_tecnica) {
+		this.descripcion_tecnica = descripcion_tecnica;
+	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
 	
 	// Constructores
-
-	public Incidencia(long id_incidencia, String descripcion, int horas, float coste, Calendar fecha_inicio,
-			Calendar fecha_fin, Usuario empleado, Solicitud solicitud, TipoIncidencia tipo) {
-		super();
-		this.id_incidencia = id_incidencia;
-		this.descripcion = descripcion;
-		this.horas = horas;
-		this.coste = coste;
-		this.fecha_inicio = fecha_inicio;
-		this.fecha_fin = fecha_fin;
-		this.empleado = empleado;
-		this.solicitud = solicitud;
-		this.tipo = tipo;
-	}
 
 	public Incidencia() {
 		super();
 	}
 
-	public Incidencia(String descripcion, int horas, float coste, Calendar fecha_inicio, Usuario empleado,
-			Solicitud solicitud, TipoIncidencia tipo) {
+	public Incidencia(long id_incidencia, String descripcion_usuario, String descripcion_tecnica, int horas,
+			float coste, boolean estado, Calendar fecha_inicio, Calendar fecha_fin) {
 		super();
-		this.descripcion = descripcion;
+		this.id_incidencia = id_incidencia;
+		this.descripcion_usuario = descripcion_usuario;
+		this.descripcion_tecnica = descripcion_tecnica;
 		this.horas = horas;
 		this.coste = coste;
+		this.estado = estado;
 		this.fecha_inicio = fecha_inicio;
-		this.empleado = empleado;
-		this.solicitud = solicitud;
-		this.tipo = tipo;
+		this.fecha_fin = fecha_fin;
 	}
+
+	public Incidencia(String descripcion_usuario, String descripcion_tecnica, int horas, float coste, boolean estado,
+			Calendar fecha_inicio, Calendar fecha_fin) {
+		super();
+		this.descripcion_usuario = descripcion_usuario;
+		this.descripcion_tecnica = descripcion_tecnica;
+		this.horas = horas;
+		this.coste = coste;
+		this.estado = estado;
+		this.fecha_inicio = fecha_inicio;
+		this.fecha_fin = fecha_fin;
+	}
+	
+	
+
+
+	
+	
+
+
 	
 
 	

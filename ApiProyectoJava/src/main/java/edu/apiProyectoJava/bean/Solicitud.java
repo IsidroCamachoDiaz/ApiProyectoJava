@@ -17,7 +17,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name="solicitudes")
+@Table(name="solicitudes",schema="datos_puros")
 public class Solicitud {
 	
 	//Atributos

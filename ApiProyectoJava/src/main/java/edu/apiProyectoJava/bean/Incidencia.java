@@ -17,7 +17,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name="incidencias")
+@Table(name="incidencias",schema="datos_puros")
 public class Incidencia {
 	
 	//Atributos

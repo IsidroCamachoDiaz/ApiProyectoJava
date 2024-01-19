@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="usuarios",schema="datos_puros")
+@Table(name="usuarios",schema="personal_datos")
 public class Usuario {
 	
 	//Atributos

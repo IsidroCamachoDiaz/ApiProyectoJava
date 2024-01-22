@@ -37,7 +37,7 @@ public class AccesoController {
 	 * @return Optional<Acceso> Devuelve una Coleccion de Acceso o nulo 
 	 */
 	@GetMapping(path="/Select/{id}")
-	public Optional<Acceso> obtenerAccesoID(@PathVariable("id") Long id) {	
+	public Optional<Acceso> obtenerAccesoID(@PathVariable("id") int id) {	
 	return this.accesoServicio.findById(id);
 	}
 	
@@ -56,7 +56,7 @@ public class AccesoController {
 	 * @param Acceso acceso
 	 */
 	@PutMapping(path="/Actualizar/{id}")
-	public void actualizarAcceso(@RequestBody Acceso acceso,@PathVariable("id") Long id) {
+	public void actualizarAcceso(@RequestBody Acceso acceso,@PathVariable("id") int id) {
 		Acceso accesoObetnido=accesoServicio.findById(id).get();
 		accesoObetnido.setCodigoAcceso(acceso.getCodigoAcceso());
 		accesoObetnido.setDescripcionAcceso(acceso.getDescripcionAcceso());
@@ -69,7 +69,7 @@ public class AccesoController {
 	 * @return Boolean Devolvera "true" si se a Eliminado correctamente o "false" si a habido algun problema
 	 */
 	@DeleteMapping(path="/Eliminar/{id}")
-	public Boolean eliminarAcceso(@PathVariable("id") Long id) {
+	public Boolean eliminarAcceso(@PathVariable("id") int id) {
 		try {
 			accesoServicio.deleteById(id);
 		}catch(IllegalArgumentException e)

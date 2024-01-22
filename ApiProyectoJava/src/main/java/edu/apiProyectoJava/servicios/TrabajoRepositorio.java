@@ -9,6 +9,6 @@ import edu.apiProyectoJava.bean.Trabajo;
  * Implementacion de la Interface Trabajo que extiende Jpa 
  * @author Isidro Camacho Diaz
  */
-public interface TrabajoRepositorio extends JpaRepository<Trabajo, Long>{
+public interface TrabajoRepositorio extends JpaRepository<Trabajo, Integer>{
 
 }

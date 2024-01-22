@@ -48,7 +48,7 @@ public class TipoIncidenciaController {
 	 * @return Optional<TipoIncidencia> Devuelve una colección de tipo de incidencia o nulo.
 	 */
 	@GetMapping(path="/Select/{id}")
-	public Optional<TipoIncidencia> obtenerTipoIncidenciaID(@PathVariable("id") Long id) {
+	public Optional<TipoIncidencia> obtenerTipoIncidenciaID(@PathVariable("id") int id) {
 	    return this.tipoIncidenciaRepositorio.findById(id);
 	}
 
@@ -69,7 +69,7 @@ public class TipoIncidenciaController {
 	 * @param tipoIncidencia  TipoIncidencia con los datos actualizados.
 	 */
 	@PutMapping(path="/Actualizar/{id}")
-	public void actualizarTipoIncidencia(@RequestBody TipoIncidencia tipoIncidencia, @PathVariable("id") Long id) {
+	public void actualizarTipoIncidencia(@RequestBody TipoIncidencia tipoIncidencia, @PathVariable("id") int id) {
 	    TipoIncidencia tipoIncidenciaObtenido = tipoIncidenciaRepositorio.findById(id).get();
 	    tipoIncidenciaObtenido.setDescripcion_tipo(tipoIncidencia.getDescripcion_tipo());
 	    tipoIncidenciaObtenido.setFecha_fin(tipoIncidencia.getFecha_fin());

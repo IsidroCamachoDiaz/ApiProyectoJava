@@ -9,6 +9,6 @@ import edu.apiProyectoJava.bean.Acceso;
  * @author El Equipazo de los Lentos
  */
 @Repository
-public interface AccesoRepositorio extends JpaRepository<Acceso, Long>{
+public interface AccesoRepositorio extends JpaRepository<Acceso, Integer>{
 
 }

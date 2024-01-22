@@ -46,7 +46,7 @@ public class UsuarioController {
 	 * @return Optional<Usuario> Devuelve una Coleccion de Usuario o nulo 
 	 */
 	@GetMapping(path="/Select/{id}")
-	public Optional<Usuario> obtenerUsuarioID(@PathVariable("id") Long id) {	
+	public Optional<Usuario> obtenerUsuarioID(@PathVariable("id") int id) {	
 	return this.usuarioRepositorio.findById(id);
 	}
 	
@@ -75,7 +75,7 @@ public class UsuarioController {
 	 * @param Usuario usuario
 	 */
 	@PutMapping(path="/Actualizar/{id}")
-	public void actualizarUsuario(@RequestBody Usuario usuario,@PathVariable("id") Long id) {
+	public void actualizarUsuario(@RequestBody Usuario usuario,@PathVariable("id") int id) {
 		Usuario usuarioConseguido=usuarioRepositorio.findById(id).get();
 		usuarioConseguido.setAcceso(usuario.getAcceso());
 		usuarioConseguido.setContrasenia(usuario.getContrasenia());
@@ -92,7 +92,7 @@ public class UsuarioController {
 	 * @return Boolean Devolvera "true" si se a Eliminado correctamente o "false" si a habido algun problema
 	 */
 	@DeleteMapping(path="/Eliminar/{id}")
-	public Boolean eliminarUsuario(@PathVariable("id") Long id) {
+	public Boolean eliminarUsuario(@PathVariable("id") int id) {
 		try {
 			usuarioRepositorio.deleteById(id);
 		}catch(IllegalArgumentException e)

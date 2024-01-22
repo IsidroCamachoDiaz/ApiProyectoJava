@@ -8,6 +8,6 @@ import edu.apiProyectoJava.bean.Acceso;
 import edu.apiProyectoJava.bean.Token;
 import edu.apiProyectoJava.bean.Usuario;
 
-public interface UsuarioRepositorio extends JpaRepository<Usuario, Long>{
+public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer>{
 	Optional<Usuario> findByCorreo(String correo);
 }

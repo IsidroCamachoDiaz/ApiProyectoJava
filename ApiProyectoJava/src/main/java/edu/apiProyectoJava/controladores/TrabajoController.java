@@ -47,7 +47,7 @@ public class TrabajoController {
 	 * @return Optional<Trabajo> Devuelve una colección de Trabajo o nulo.
 	 */
 	@GetMapping(path="/Select/{id}")
-	public Optional<Trabajo> obtenerTrabajoID(@PathVariable("id") Long id) {
+	public Optional<Trabajo> obtenerTrabajoID(@PathVariable("id") int id) {
 	    return this.trabajoRepositorio.findById(id);
 	}
 
@@ -68,7 +68,7 @@ public class TrabajoController {
 	 * @param trabajo Objeto Trabajo con los datos actualizados.
 	 */
 	@PutMapping(path="/Actualizar/{id}")
-	public void actualizarTrabajo(@RequestBody Trabajo trabajo, @PathVariable("id") Long id) {
+	public void actualizarTrabajo(@RequestBody Trabajo trabajo, @PathVariable("id") int id) {
 	    Trabajo trabajoObtenido = trabajoRepositorio.findById(id).get();
 	    trabajoObtenido.setDescripcion(trabajo.getDescripcion());
 	    trabajoObtenido.setEstado(trabajo.isEstado());
@@ -83,7 +83,7 @@ public class TrabajoController {
 	 * @return Boolean Devolverá "true" si se ha eliminado correctamente o "false" si ha habido algún problema.
 	 */
 	@DeleteMapping(path="/Eliminar/{id}")
-	public Boolean eliminarTrabajo(@PathVariable("id") Long id) {
+	public Boolean eliminarTrabajo(@PathVariable("id") int id) {
 	    try {
 	        trabajoRepositorio.deleteById(id);
 	    } catch (IllegalArgumentException e) {

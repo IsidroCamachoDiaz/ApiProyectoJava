@@ -48,7 +48,7 @@ public class IncidenciaController {
 	 * @return Optional<Incidencia> Devuelve una colección de incidencia o nulo.
 	 */
 	@GetMapping(path="/Select/{id}")
-	public Optional<Incidencia> obtenerIncidenciaID(@PathVariable("id") Long id) {	
+	public Optional<Incidencia> obtenerIncidenciaID(@PathVariable("id") int id) {	
 	    return this.incidenciaRepositorio.findById(id);
 	}
 
@@ -69,7 +69,7 @@ public class IncidenciaController {
 	 * @param incidencia Incidencia con los datos actualizados.
 	 */
 	@PutMapping(path="/Actualizar/{id}")
-	public void actualizarIncidencia(@RequestBody Incidencia incidencia, @PathVariable("id") Long id) {
+	public void actualizarIncidencia(@RequestBody Incidencia incidencia, @PathVariable("id") int id) {
 	    Incidencia incidenciaObtenida = incidenciaRepositorio.findById(id).get();
 	    incidenciaObtenida.setCoste(incidencia.getCoste());
 	    incidenciaObtenida.setEmpleado(incidencia.getEmpleado());
@@ -90,7 +90,7 @@ public class IncidenciaController {
 	 * @return Boolean Devolverá "true" si se ha eliminado correctamente o "false" si ha habido algún problema.
 	 */
 	@DeleteMapping(path="/Eliminar/{id}")
-	public Boolean eliminarIncidencia(@PathVariable("id") Long id) {
+	public Boolean eliminarIncidencia(@PathVariable("id") int id) {
 	    try {
 	        incidenciaRepositorio.deleteById(id);
 	    } catch (IllegalArgumentException e) {

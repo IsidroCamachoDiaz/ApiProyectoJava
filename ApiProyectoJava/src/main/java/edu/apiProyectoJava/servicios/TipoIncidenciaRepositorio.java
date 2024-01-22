@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import edu.apiProyectoJava.bean.TipoIncidencia;
 import edu.apiProyectoJava.bean.Usuario;
 
-public interface TipoIncidenciaRepositorio extends JpaRepository<TipoIncidencia, Long>{
+public interface TipoIncidenciaRepositorio extends JpaRepository<TipoIncidencia, Integer>{
 
 }

@@ -12,6 +12,6 @@ import edu.apiProyectoJava.bean.Token;
  * @author El grupazo de los Lentos
  */
 @Repository
-public interface TokenRepositorio extends JpaRepository<Token, Long>{
+public interface TokenRepositorio extends JpaRepository<Token, Integer>{
 	Optional<Token> findByToken(String token);
 }

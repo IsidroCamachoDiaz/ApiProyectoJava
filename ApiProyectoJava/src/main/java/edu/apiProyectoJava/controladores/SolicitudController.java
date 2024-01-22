@@ -47,7 +47,7 @@ public class SolicitudController {
 	 * @return Optional<Solicitud> Devuelve una colección de solicitud o nulo.
 	 */
 	@GetMapping(path="/Select/{id}")
-	public Optional<Solicitud> obtenerSolicitudID(@PathVariable("id") Long id) {
+	public Optional<Solicitud> obtenerSolicitudID(@PathVariable("id") int id) {
 	    return this.solicitudRepositorio.findById(id);
 	}
 
@@ -68,7 +68,7 @@ public class SolicitudController {
 	 * @param solicitud Solicitud con los datos actualizados.
 	 */
 	@PutMapping(path="/Actualizar/{id}")
-	public void actualizarSolicitud(@RequestBody Solicitud solicitud, @PathVariable("id") Long id) {
+	public void actualizarSolicitud(@RequestBody Solicitud solicitud, @PathVariable("id") int id) {
 	    Solicitud solicitudObtenida = solicitudRepositorio.findById(id).get();
 	    solicitudObtenida.setDescripcion(solicitud.getDescripcion());
 	    solicitudObtenida.setFch_limite(solicitud.getFch_limite());
@@ -83,7 +83,7 @@ public class SolicitudController {
 	 * @return Boolean Devolverá "true" si se ha eliminado correctamente o "false" si ha habido algún problema.
 	 */
 	@DeleteMapping(path="/Eliminar/{id}")
-	public Boolean eliminarSolicitud(@PathVariable("id") Long id) {
+	public Boolean eliminarSolicitud(@PathVariable("id") int id) {
 	    try {
 	        solicitudRepositorio.deleteById(id);
 	    } catch (IllegalArgumentException e) {

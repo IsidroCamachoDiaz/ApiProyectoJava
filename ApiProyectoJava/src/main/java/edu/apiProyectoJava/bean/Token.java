@@ -23,7 +23,7 @@ public class Token {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_token", nullable=false)
-	private long idToken;
+	private int idToken;
 		
 	@Column(name="token", nullable=false)
 	private String token;
@@ -52,7 +52,7 @@ public class Token {
 		this.usuario = usuario;
 	}
 
-	public void setIdToken(long idToken) {
+	public void setIdToken(int idToken) {
 		this.idToken = idToken;
 	}
 

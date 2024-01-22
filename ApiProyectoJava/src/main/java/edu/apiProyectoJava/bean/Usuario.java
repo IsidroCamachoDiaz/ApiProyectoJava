@@ -21,7 +21,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_usuario",nullable=false)
-	private long id_usuario;
+	private int id_usuario;
 	
 	@Column(name="nombre_usuario",nullable=false)
 	private String nombre;
@@ -57,7 +57,7 @@ public class Usuario {
 		return id_usuario;
 	}
 
-	public void setId_usuario(long id_usuario) {
+	public void setId_usuario(int id_usuario) {
 		this.id_usuario = id_usuario;
 	}
 
@@ -111,7 +111,7 @@ public class Usuario {
 	
 	//Constructores
 
-	public Usuario(long id_usuario, String nombre, String telefono, String correo, String contrasenia, byte[] foto,
+	public Usuario(int id_usuario, String nombre, String telefono, String correo, String contrasenia, byte[] foto,
 			Acceso acceso) {
 		super();
 		this.id_usuario = id_usuario;

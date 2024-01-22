@@ -22,7 +22,7 @@ public class TipoIncidencia {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_tipo",nullable=false)
-	private long id_tipo;
+	private int id_tipo;
 	
 	@Column(name="descripcion_tipo",nullable=false)
 	private String descripcion_tipo;
@@ -43,7 +43,7 @@ public class TipoIncidencia {
 		return id_tipo;
 	}
 
-	public void setId_tipo(long id_tipo) {
+	public void setId_tipo(int id_tipo) {
 		this.id_tipo = id_tipo;
 	}
 
@@ -66,7 +66,7 @@ public class TipoIncidencia {
 	
 	//Constructores
 	
-	public TipoIncidencia(long id_tipo, String descripcion_tipo, float precio_tipo, Calendar fecha_fin) {
+	public TipoIncidencia(int id_tipo, String descripcion_tipo, float precio_tipo, Calendar fecha_fin) {
 		super();
 		this.id_tipo = id_tipo;
 		this.descripcion_tipo = descripcion_tipo;

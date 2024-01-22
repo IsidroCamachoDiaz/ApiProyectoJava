@@ -25,7 +25,7 @@ public class Incidencia {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_incidencia",nullable=false)
-	private long id_incidencia;
+	private int id_incidencia;
 	
 	@Column(name="descripcion_usuario",nullable=false)
 	private String descripcion_usuario;
@@ -67,7 +67,7 @@ public class Incidencia {
 		return id_incidencia;
 	}
 
-	public void setId_incidencia(long id_incidencia) {
+	public void setId_incidencia(int id_incidencia) {
 		this.id_incidencia = id_incidencia;
 	}
 
@@ -151,7 +151,7 @@ public class Incidencia {
 		super();
 	}
 
-	public Incidencia(long id_incidencia, String descripcion_usuario, String descripcion_tecnica, int horas,
+	public Incidencia(int id_incidencia, String descripcion_usuario, String descripcion_tecnica, int horas,
 			float coste, boolean estado, Calendar fecha_inicio, Calendar fecha_fin) {
 		super();
 		this.id_incidencia = id_incidencia;

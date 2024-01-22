@@ -25,7 +25,7 @@ public class Solicitud {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_solicitud",nullable=false)
-	private long id_solicitud;
+	private int id_solicitud;
 	
 	@Column(name="descripcion_solicitud",nullable=false)
 	private String descripcion;
@@ -50,7 +50,7 @@ public class Solicitud {
 		return id_solicitud;
 	}
 
-	public void setId_solicitud(long id_solicitud) {
+	public void setId_solicitud(int id_solicitud) {
 		this.id_solicitud = id_solicitud;
 	}
 
@@ -84,7 +84,7 @@ public class Solicitud {
 		super();
 	}
 
-	public Solicitud(long id_solicitud, String descripcion, boolean estado, Calendar fch_limite) {
+	public Solicitud(int id_solicitud, String descripcion, boolean estado, Calendar fch_limite) {
 		super();
 		this.id_solicitud = id_solicitud;
 		this.descripcion = descripcion;

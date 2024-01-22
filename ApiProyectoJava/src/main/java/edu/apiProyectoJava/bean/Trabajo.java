@@ -16,7 +16,7 @@ public class Trabajo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_trabajo",nullable=false)
-	private long id_trabajo;
+	private int id_trabajo;
 	
 	@Column(name="descripcion_trabajo",nullable=false)
 	private String descripcion;
@@ -61,7 +61,7 @@ public class Trabajo {
 	}
 
 	//Constructores
-	public Trabajo(long id_trabajo, String descripcion, boolean estado, int horas) {
+	public Trabajo(int id_trabajo, String descripcion, boolean estado, int horas) {
 		super();
 		this.id_trabajo = id_trabajo;
 		this.descripcion = descripcion;

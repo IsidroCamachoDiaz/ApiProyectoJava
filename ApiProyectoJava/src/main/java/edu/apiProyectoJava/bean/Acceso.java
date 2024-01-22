@@ -25,7 +25,7 @@ public class Acceso {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_acceso", nullable=false)
-	private long idAcceso;
+	private int idAcceso;
 	
 	@Column(name="codigo_acceso", nullable=false)
 	private String codigoAcceso;
@@ -90,7 +90,7 @@ public class Acceso {
 	 * @param codigoAcceso 
 	 * @param descripcionAcceso
 	 */
-	public Acceso(long idAcceso,String codigoAcceso, String descripcionAcceso) {
+	public Acceso(int idAcceso,String codigoAcceso, String descripcionAcceso) {
 		super();
 		this.idAcceso=idAcceso;
 		this.codigoAcceso = codigoAcceso;

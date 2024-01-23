@@ -31,6 +31,9 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio;
 	
+	@Autowired
+	private AccesoRepositorio accesoRepositorio;
+	
 	/**
 	 * Devuelve todos los Usuarios con la peticion GET
 	 * @return Iterable<Usuario> Objeto que almacena todos los usuarios
@@ -66,6 +69,7 @@ public class UsuarioController {
 	 */
 	@PostMapping("/Insertar")
 	public void insertarUsuario(@RequestBody Usuario usuario) {
+		usuario.setAcceso(this.accesoRepositorio.findByCodigoAcceso("Pendiente"));
 		this.usuarioRepositorio.save(usuario);
 	}
 	

@@ -10,5 +10,5 @@ import edu.apiProyectoJava.bean.Acceso;
  */
 @Repository
 public interface AccesoRepositorio extends JpaRepository<Acceso, Integer>{
-
+ Acceso findByCodigoAcceso(String codigo);
 }

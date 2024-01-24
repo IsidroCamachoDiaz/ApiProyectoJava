@@ -27,7 +27,7 @@ public class TokenController {
 	 * @param token Identificacion que usaremos para diferenciar a otros Tokens
 	 * @return Optional<Token> Devuelve una Coleccion de Token o nulo 
 	 */
-	@GetMapping(path="/tokenSelect/{token}")
+	@GetMapping(path="/Select/{token}")
 	public Optional<Token> getToken(@PathVariable("token") String token) {	
 		return tokenServicio.findByToken(token);
 	}
@@ -37,7 +37,7 @@ public class TokenController {
 	 * @param token usaremos para insertar
 	 */
 	
-	@PostMapping("/tokenInsertar")
+	@PostMapping("/Insertar")
 	public void insertarToken(@RequestBody Token token) {
 		this.tokenServicio.save(token);
 	}

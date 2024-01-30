@@ -69,7 +69,7 @@ public class UsuarioController {
 	 */
 	@PostMapping("/Insertar")
 	public void insertarUsuario(@RequestBody Usuario usuario) {
-		usuario.setAcceso(this.accesoRepositorio.findByCodigoAcceso("Pendiente"));
+		usuario.setAcceso(this.accesoRepositorio.findByCodigoAcceso("Usuario"));
 		this.usuarioRepositorio.save(usuario);
 	}
 	
@@ -87,6 +87,7 @@ public class UsuarioController {
 		usuarioConseguido.setFoto(usuario.getFoto());
 		usuarioConseguido.setNombre(usuario.getNombre());
 		usuarioConseguido.setTelefono(usuario.getTelefono());
+		usuarioConseguido.setAlta(usuario.isAlta());
 		usuarioRepositorio.save(usuarioConseguido);
 	}
 	

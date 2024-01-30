@@ -35,6 +35,9 @@ public class Usuario {
 	@Column(name="contrasenia_usuario",nullable=false)
 	private String contrasenia;
 	
+	@Column(name="alta",nullable=false)
+	private boolean alta;
+	
 	@Column(name="foto_usuario")
 	private byte[] foto;
 	
@@ -109,10 +112,18 @@ public class Usuario {
 		this.acceso = acceso;
 	}
 	
+	public boolean isAlta() {
+		return alta;
+	}
+
+	public void setAlta(boolean alta) {
+		this.alta = alta;
+	}
+		
 	//Constructores
 
 	public Usuario(int id_usuario, String nombre, String telefono, String correo, String contrasenia, byte[] foto,
-			Acceso acceso) {
+			Acceso acceso,boolean alta) {
 		super();
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;
@@ -121,6 +132,7 @@ public class Usuario {
 		this.contrasenia = contrasenia;
 		this.foto = foto;
 		this.acceso = acceso;
+		this.alta=alta;
 	}
 
 	public Usuario() {

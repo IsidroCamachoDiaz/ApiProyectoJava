@@ -1,5 +1,7 @@
 package edu.apiProyectoJava.servicios;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +12,5 @@ import edu.apiProyectoJava.bean.Acceso;
  */
 @Repository
 public interface AccesoRepositorio extends JpaRepository<Acceso, Integer>{
- Acceso findByCodigoAcceso(String codigo);
+	Acceso findByCodigoAcceso(String codigo);
 }

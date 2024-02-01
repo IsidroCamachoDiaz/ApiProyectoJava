@@ -1,5 +1,6 @@
 package edu.apiProyectoJava.bean;
 
+import java.util.Calendar;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -11,6 +12,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="usuarios",schema="personal_datos")
@@ -40,6 +43,10 @@ public class Usuario {
 	
 	@Column(name="foto_usuario")
 	private byte[] foto;
+	
+	@Column(name="fecha_baja")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar fecha_baja;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_acceso")
@@ -119,11 +126,20 @@ public class Usuario {
 	public void setAlta(boolean alta) {
 		this.alta = alta;
 	}
+	
+	public Calendar getFecha_baja() {
+		return fecha_baja;
+	}
+
+	public void setFecha_baja(Calendar fecha_baja) {
+		this.fecha_baja = fecha_baja;
+	}
 		
 	//Constructores
 
+
 	public Usuario(int id_usuario, String nombre, String telefono, String correo, String contrasenia, byte[] foto,
-			Acceso acceso,boolean alta) {
+			Acceso acceso,boolean alta,Calendar fecha_baja) {
 		super();
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;
@@ -133,6 +149,7 @@ public class Usuario {
 		this.foto = foto;
 		this.acceso = acceso;
 		this.alta=alta;
+		this.fecha_baja=fecha_baja;
 	}
 
 	public Usuario() {

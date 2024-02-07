@@ -3,6 +3,9 @@ package edu.apiProyectoJava.bean;
 import java.util.Calendar;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,10 +42,11 @@ public class Solicitud {
 	
 	@ManyToOne
 	@JoinColumn(name="id_usuario")
-	private Usuario usuario_solicitud;
+	private Usuario cliente;
 	
-	@OneToOne(mappedBy="solicitud")
+	@OneToOne(mappedBy="solicitud", cascade = CascadeType.ALL)
 	@JoinColumn(name="id_incidencia")
+	@JsonManagedReference
 	private Incidencia incidencia;
 
 	//Geters y Seters
@@ -84,19 +88,21 @@ public class Solicitud {
 		super();
 	}
 
-	public Solicitud(int id_solicitud, String descripcion, boolean estado, Calendar fch_limite) {
+	public Solicitud(int id_solicitud, String descripcion, boolean estado, Calendar fch_limite,Usuario user) {
 		super();
 		this.id_solicitud = id_solicitud;
 		this.descripcion = descripcion;
 		this.estado = estado;
 		this.fch_limite = fch_limite;
+		this.cliente=user;
 	}
 
-	public Solicitud(String descripcion, boolean estado, Calendar fch_limite) {
+	public Solicitud(String descripcion, boolean estado, Calendar fch_limite,Usuario user) {
 		super();
 		this.descripcion = descripcion;
 		this.estado = estado;
 		this.fch_limite = fch_limite;
+		this.cliente=user;
 	}
 	
 	

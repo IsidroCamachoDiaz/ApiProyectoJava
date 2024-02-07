@@ -55,7 +55,7 @@ public class Usuario {
 	@OneToMany(mappedBy="usuario")
 	private List <Token> tokens_usuario;
 	
-	@OneToMany(mappedBy="usuario_solicitud")
+	@OneToMany(mappedBy="cliente")
 	private List <Solicitud> solicitudes_usuario;
 	
 	@OneToMany(mappedBy="empleado")

@@ -3,8 +3,15 @@ package edu.apiProyectoJava.bean;
 import java.util.Calendar;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,6 +24,11 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="usuarios",schema="personal_datos")
+
+@JsonIdentityInfo(
+	generator=ObjectIdGenerators.PropertyGenerator.class,
+	property="id_usuario"
+)
 public class Usuario {
 	
 	//Atributos
@@ -55,7 +67,8 @@ public class Usuario {
 	@OneToMany(mappedBy="usuario")
 	private List <Token> tokens_usuario;
 	
-	@OneToMany(mappedBy="cliente")
+	
+	@OneToMany(mappedBy="cliente",fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List <Solicitud> solicitudes_usuario;
 	
 	@OneToMany(mappedBy="empleado")

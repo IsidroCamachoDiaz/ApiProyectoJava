@@ -3,11 +3,16 @@ package edu.apiProyectoJava.bean;
 import java.util.Calendar;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,6 +26,10 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="solicitudes",schema="datos_puros")
+@JsonIdentityInfo(
+		generator=ObjectIdGenerators.PropertyGenerator.class,
+		property="id_solicitud"
+	)
 public class Solicitud {
 	
 	//Atributos
@@ -40,8 +49,9 @@ public class Solicitud {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fch_limite;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="id_usuario")
+	@JsonManagedReference
 	private Usuario cliente;
 	
 	@OneToOne(mappedBy="solicitud", cascade = CascadeType.ALL)

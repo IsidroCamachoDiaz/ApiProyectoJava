@@ -26,10 +26,6 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="solicitudes",schema="datos_puros")
-@JsonIdentityInfo(
-		generator=ObjectIdGenerators.PropertyGenerator.class,
-		property="id_solicitud"
-	)
 public class Solicitud {
 	
 	//Atributos
@@ -49,14 +45,12 @@ public class Solicitud {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fch_limite;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name="id_usuario")
-	@JsonManagedReference
 	private Usuario cliente;
 	
 	@OneToOne(mappedBy="solicitud", cascade = CascadeType.ALL)
 	@JoinColumn(name="id_incidencia")
-	@JsonManagedReference
 	private Incidencia incidencia;
 
 	//Geters y Seters
@@ -93,6 +87,22 @@ public class Solicitud {
 	}
 	
 	//Constructores
+
+	public Usuario getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Usuario cliente) {
+		this.cliente = cliente;
+	}
+
+	public Incidencia getIncidencia() {
+		return incidencia;
+	}
+
+	public void setIncidencia(Incidencia incidencia) {
+		this.incidencia = incidencia;
+	}
 
 	public Solicitud() {
 		super();

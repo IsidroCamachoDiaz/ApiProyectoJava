@@ -3,8 +3,7 @@ package edu.apiProyectoJava.bean;
 import java.util.Calendar;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -59,7 +58,7 @@ public class Incidencia {
 	
 	@OneToOne
 	@JoinColumn(name="id_solicitud")
-	@JsonBackReference
+	@JsonIgnore
 	private Solicitud solicitud;
 	
 	 @OneToMany(mappedBy="incidencia")

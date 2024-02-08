@@ -3,10 +3,7 @@ package edu.apiProyectoJava.bean;
 import java.util.Calendar;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -24,11 +21,6 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="usuarios",schema="personal_datos")
-
-@JsonIdentityInfo(
-	generator=ObjectIdGenerators.PropertyGenerator.class,
-	property="id_usuario"
-)
 public class Usuario {
 	
 	//Atributos
@@ -65,18 +57,19 @@ public class Usuario {
 	private Acceso acceso;
 	
 	@OneToMany(mappedBy="usuario")
+	@JsonIgnore
 	private List <Token> tokens_usuario;
 	
 	
 	@OneToMany(mappedBy="cliente",fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List <Solicitud> solicitudes_usuario;
 	
 	@OneToMany(mappedBy="empleado")
+	@JsonIgnore
 	private List <Incidencia> incidencias_empleado;
 
-	//Geters y Seters	
-	
-	public long getId_usuario() {
+	public int getId_usuario() {
 		return id_usuario;
 	}
 
@@ -116,12 +109,28 @@ public class Usuario {
 		this.contrasenia = contrasenia;
 	}
 
+	public boolean isAlta() {
+		return alta;
+	}
+
+	public void setAlta(boolean alta) {
+		this.alta = alta;
+	}
+
 	public byte[] getFoto() {
 		return foto;
 	}
 
 	public void setFoto(byte[] foto) {
 		this.foto = foto;
+	}
+
+	public Calendar getFecha_baja() {
+		return fecha_baja;
+	}
+
+	public void setFecha_baja(Calendar fecha_baja) {
+		this.fecha_baja = fecha_baja;
 	}
 
 	public Acceso getAcceso() {
@@ -131,51 +140,56 @@ public class Usuario {
 	public void setAcceso(Acceso acceso) {
 		this.acceso = acceso;
 	}
-	
-	public boolean isAlta() {
-		return alta;
+
+	public List<Token> getTokens_usuario() {
+		return tokens_usuario;
 	}
 
-	public void setAlta(boolean alta) {
-		this.alta = alta;
-	}
-	
-	public Calendar getFecha_baja() {
-		return fecha_baja;
+	public void setTokens_usuario(List<Token> tokens_usuario) {
+		this.tokens_usuario = tokens_usuario;
 	}
 
-	public void setFecha_baja(Calendar fecha_baja) {
-		this.fecha_baja = fecha_baja;
+	public List<Solicitud> getSolicitudes_usuario() {
+		return solicitudes_usuario;
 	}
-		
-	//Constructores
 
+	public void setSolicitudes_usuario(List<Solicitud> solicitudes_usuario) {
+		this.solicitudes_usuario = solicitudes_usuario;
+	}
 
-	public Usuario(int id_usuario, String nombre, String telefono, String correo, String contrasenia, byte[] foto,
-			Acceso acceso,boolean alta,Calendar fecha_baja) {
+	public List<Incidencia> getIncidencias_empleado() {
+		return incidencias_empleado;
+	}
+
+	public void setIncidencias_empleado(List<Incidencia> incidencias_empleado) {
+		this.incidencias_empleado = incidencias_empleado;
+	}
+
+	public Usuario(int id_usuario, String nombre, String telefono, String correo, String contrasenia, boolean alta,
+			byte[] foto, Calendar fecha_baja, Acceso acceso, List<Token> tokens_usuario,
+			List<Solicitud> solicitudes_usuario, List<Incidencia> incidencias_empleado) {
 		super();
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.correo = correo;
 		this.contrasenia = contrasenia;
+		this.alta = alta;
 		this.foto = foto;
+		this.fecha_baja = fecha_baja;
 		this.acceso = acceso;
-		this.alta=alta;
-		this.fecha_baja=fecha_baja;
+		this.tokens_usuario = tokens_usuario;
+		this.solicitudes_usuario = solicitudes_usuario;
+		this.incidencias_empleado = incidencias_empleado;
 	}
 
 	public Usuario() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(String nombre, String telefono, String correo, String contrasenia, byte[] foto) {
-		super();
-		this.nombre = nombre;
-		this.telefono = telefono;
-		this.correo = correo;
-		this.contrasenia = contrasenia;
-		this.foto = foto;
-	}	
+	//Geters y Seters	
+	
+	
 
 }

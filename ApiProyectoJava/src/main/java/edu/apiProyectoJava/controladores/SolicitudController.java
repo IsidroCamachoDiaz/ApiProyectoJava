@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.apiProyectoJava.bean.Acceso;
 import edu.apiProyectoJava.bean.Solicitud;
 import edu.apiProyectoJava.servicios.AccesoRepositorio;
+import edu.apiProyectoJava.servicios.IncidenciaRepositorio;
 import edu.apiProyectoJava.servicios.SolicitudRepositorio;
 
 /**
@@ -30,6 +31,7 @@ public class SolicitudController {
 
 	@Autowired
 	private SolicitudRepositorio solicitudRepositorio;
+	
 	/**
 	 * Devuelve todas las solicitudes con la petición GET.
 	 *
@@ -58,7 +60,8 @@ public class SolicitudController {
 	 */
 	@PostMapping("/Insertar")
 	public void insertarSolicitud(@RequestBody Solicitud solicitud) {
-	    this.solicitudRepositorio.save(solicitud);
+		solicitud.getIncidencia().setSolicitud(solicitud);
+	    this.solicitudRepositorio.save(solicitud);	    
 	}
 
 	/**

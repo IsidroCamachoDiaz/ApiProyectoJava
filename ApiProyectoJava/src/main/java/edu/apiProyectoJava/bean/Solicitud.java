@@ -47,12 +47,12 @@ public class Solicitud {
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name="id_usuario")
-	@JsonIgnoreProperties("solicitudes_usuario")
+	@JsonIgnoreProperties(value={"solicitudes_usuario"},allowSetters=true)
 	private Usuario cliente;
 	
 	@OneToOne(mappedBy="solicitud", cascade = CascadeType.ALL)
 	@JoinColumn(name="id_incidencia")
-	@JsonIgnoreProperties("solicitud")
+	@JsonIgnoreProperties(value={"solicitud"},allowSetters=true)
 	private Incidencia incidencia;
 
 	//Geters y Seters

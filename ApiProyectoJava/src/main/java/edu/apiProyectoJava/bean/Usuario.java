@@ -58,16 +58,16 @@ public class Usuario {
 	private Acceso acceso;
 	
 	@OneToMany(mappedBy="usuario")
-	@JsonIgnoreProperties("usuario")
+	@JsonIgnoreProperties(value={"usuario"},allowSetters=true)
 	private List <Token> tokens_usuario;
 	
 	
 	@OneToMany(mappedBy="cliente",fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("cliente")
+	@JsonIgnoreProperties(value={"cliente"},allowSetters=true)
 	private List <Solicitud> solicitudes_usuario;
 	
 	@OneToMany(mappedBy="empleado")
-	@JsonIgnoreProperties("empleado")
+	@JsonIgnoreProperties(value={"empleado"},allowSetters=true)
 	private List <Incidencia> incidencias_empleado;
 
 	public int getId_usuario() {

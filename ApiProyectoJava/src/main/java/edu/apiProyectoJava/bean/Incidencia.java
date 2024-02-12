@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -58,7 +59,7 @@ public class Incidencia {
 	
 	@OneToOne
 	@JoinColumn(name="id_solicitud")
-	@JsonIgnore
+	@JsonIgnoreProperties("incidencia")
 	private Solicitud solicitud;
 	
 	 @OneToMany(mappedBy="incidencia")

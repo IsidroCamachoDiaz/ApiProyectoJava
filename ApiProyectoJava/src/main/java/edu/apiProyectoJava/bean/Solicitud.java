@@ -47,10 +47,12 @@ public class Solicitud {
 	
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name="id_usuario")
+	@JsonIgnoreProperties("solicitudes_usuario")
 	private Usuario cliente;
 	
 	@OneToOne(mappedBy="solicitud", cascade = CascadeType.ALL)
 	@JoinColumn(name="id_incidencia")
+	@JsonIgnoreProperties("solicitud")
 	private Incidencia incidencia;
 
 	//Geters y Seters

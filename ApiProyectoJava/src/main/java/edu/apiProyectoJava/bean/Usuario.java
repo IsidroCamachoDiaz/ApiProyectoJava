@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -57,16 +58,16 @@ public class Usuario {
 	private Acceso acceso;
 	
 	@OneToMany(mappedBy="usuario")
-	@JsonIgnore
+	@JsonIgnoreProperties("usuario")
 	private List <Token> tokens_usuario;
 	
 	
 	@OneToMany(mappedBy="cliente",fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JsonIgnore
+	@JsonIgnoreProperties("cliente")
 	private List <Solicitud> solicitudes_usuario;
 	
 	@OneToMany(mappedBy="empleado")
-	@JsonIgnore
+	@JsonIgnoreProperties("empleado")
 	private List <Incidencia> incidencias_empleado;
 
 	public int getId_usuario() {

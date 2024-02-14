@@ -76,6 +76,8 @@ public class SolicitudController {
 	    solicitudObtenida.setDescripcion(solicitud.getDescripcion());
 	    solicitudObtenida.setFch_limite(solicitud.getFch_limite());
 	    solicitudObtenida.setEstado(solicitud.isEstado());
+	    solicitud.getIncidencia().setSolicitud(solicitud);
+	    solicitudObtenida.setIncidencia(solicitud.getIncidencia());
 	    solicitudRepositorio.save(solicitudObtenida);
 	}
 

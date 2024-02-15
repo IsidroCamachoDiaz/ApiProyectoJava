@@ -59,6 +59,7 @@ public class TipoIncidenciaController {
 	 */
 	@PostMapping("/Insertar")
 	public void insertarTipoIncidencia(@RequestBody TipoIncidencia tipoIncidencia) {
+		float precio=tipoIncidencia.getPrecio_tipo();
 	    this.tipoIncidenciaRepositorio.save(tipoIncidencia);
 	}
 

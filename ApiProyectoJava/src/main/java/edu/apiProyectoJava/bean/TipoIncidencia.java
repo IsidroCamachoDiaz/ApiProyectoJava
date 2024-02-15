@@ -63,7 +63,13 @@ public class TipoIncidencia {
 		this.fecha_fin = fecha_fin;
 	}
 
-	
+	public float getPrecio_tipo() {
+		return precio_tipo;
+	}
+
+	public void setPrecio_tipo(float precio_tipo) {
+		this.precio_tipo = precio_tipo;
+	}
 	//Constructores
 	
 	public TipoIncidencia(int id_tipo, String descripcion_tipo, float precio_tipo, Calendar fecha_fin) {

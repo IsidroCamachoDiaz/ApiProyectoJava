@@ -60,7 +60,7 @@ public class Incidencia {
 	
 	@OneToOne
 	@JoinColumn(name="id_solicitud")
-	@JsonIgnoreProperties(value={"incidencia"},allowSetters=true)
+	//@JsonIgnoreProperties(value={"incidencia"},allowSetters=true)
 	private Solicitud solicitud;
 	
 	 @OneToMany(mappedBy="incidencia")
@@ -68,7 +68,7 @@ public class Incidencia {
 
 	//Geters y Seters
 	
-	public long getId_incidencia() {
+	public int getId_incidencia() {
 		return id_incidencia;
 	}
 
@@ -180,6 +180,15 @@ public class Incidencia {
 		this.fecha_inicio = fecha_inicio;
 		this.fecha_fin = fecha_fin;
 	}
+
+	public Incidencia(String descripcion_usuario, boolean estado, Solicitud solicitud) {
+		super();
+		this.descripcion_usuario = descripcion_usuario;
+		this.estado = estado;
+		this.solicitud = solicitud;
+	}
+	
+	
 	
 	
 

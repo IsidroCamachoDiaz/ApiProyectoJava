@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.apiProyectoJava.bean.Acceso;
+import edu.apiProyectoJava.bean.Incidencia;
 import edu.apiProyectoJava.bean.Solicitud;
 import edu.apiProyectoJava.servicios.AccesoRepositorio;
 import edu.apiProyectoJava.servicios.IncidenciaRepositorio;
@@ -31,6 +32,8 @@ public class SolicitudController {
 
 	@Autowired
 	private SolicitudRepositorio solicitudRepositorio;
+	@Autowired
+	private IncidenciaRepositorio incidenciaRepositorio;
 	
 	/**
 	 * Devuelve todas las solicitudes con la petición GET.
@@ -60,8 +63,11 @@ public class SolicitudController {
 	 */
 	@PostMapping("/Insertar")
 	public void insertarSolicitud(@RequestBody Solicitud solicitud) {
-		solicitud.getIncidencia().setSolicitud(solicitud);
-	    this.solicitudRepositorio.save(solicitud);	    
+		//solicitud.getIncidencia().setSolicitud(solicitud);
+	    this.solicitudRepositorio.save(solicitud);
+	    Incidencia incidencia= new Incidencia(solicitud.getDescripcion(),false,solicitud);
+	    this.incidenciaRepositorio.save(incidencia);
+	    
 	}
 
 	/**
@@ -75,9 +81,7 @@ public class SolicitudController {
 	    Solicitud solicitudObtenida = solicitudRepositorio.findById(id).get();
 	    solicitudObtenida.setDescripcion(solicitud.getDescripcion());
 	    solicitudObtenida.setFch_limite(solicitud.getFch_limite());
-	    solicitudObtenida.setEstado(solicitud.isEstado());
-	    solicitud.getIncidencia().setSolicitud(solicitud);
-	    solicitudObtenida.setIncidencia(solicitud.getIncidencia());
+	    solicitudObtenida.setEstado(solicitud.isEstado());;
 	    solicitudRepositorio.save(solicitudObtenida);
 	}
 

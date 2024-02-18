@@ -59,6 +59,34 @@ public class Trabajo {
 	public void setHoras(int horas) {
 		this.horas = horas;
 	}
+	
+	
+
+	public Incidencia getIncidencia() {
+		return incidencia;
+	}
+
+	public void setIncidencia(Incidencia incidencia) {
+		this.incidencia = incidencia;
+	}
+
+	public TipoIncidencia getTipoIncidencia() {
+		return tipoIncidencia;
+	}
+
+	public void setTipoIncidencia(TipoIncidencia tipoIncidencia) {
+		this.tipoIncidencia = tipoIncidencia;
+	}
+	
+	
+
+	public int getId_trabajo() {
+		return id_trabajo;
+	}
+
+	public void setId_trabajo(int id_trabajo) {
+		this.id_trabajo = id_trabajo;
+	}
 
 	//Constructores
 	public Trabajo(int id_trabajo, String descripcion, boolean estado, int horas) {

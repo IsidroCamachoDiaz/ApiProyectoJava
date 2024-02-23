@@ -88,6 +88,7 @@ public class UsuarioController {
 		usuarioConseguido.setNombre(usuario.getNombre());
 		usuarioConseguido.setTelefono(usuario.getTelefono());
 		usuarioConseguido.setAlta(usuario.isAlta());
+		usuarioConseguido.setFecha_baja(usuario.getFecha_baja());
 		usuarioRepositorio.save(usuarioConseguido);
 	}
 	

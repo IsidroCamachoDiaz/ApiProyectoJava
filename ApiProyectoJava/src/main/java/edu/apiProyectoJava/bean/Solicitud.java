@@ -23,6 +23,19 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+/**
+ * Clase que representa una solicitud realizada por un cliente en el sistema.
+ * 
+ * Esta clase mapea la entidad 'solicitudes' de la base de datos.
+ * 
+ * @author Isidro Camacho Diaz
+ * 
+ * @param id_solicitud Identificador único de la solicitud.
+ * @param descripcion Descripción de la solicitud.
+ * @param estado Estado actual de la solicitud.
+ * @param fch_limite Fecha límite para la realización de la solicitud.
+ * @param cliente Usuario que realiza la solicitud.
+ */
 
 @Entity
 @Table(name="solicitudes",schema="datos_puros")
@@ -98,18 +111,22 @@ public class Solicitud {
 		this.cliente = cliente;
 	}
 
-	/*public Incidencia getIncidencia() {
-		return incidencia;
-	}
-
-	public void setIncidencia(Incidencia incidencia) {
-		this.incidencia = incidencia;
-	}*/
-
+	/**
+	 * Crea una nueva instancia de Solicitud sin inicializar sus atributos.
+	 */
 	public Solicitud() {
 		super();
 	}
-
+	
+	/**
+	 * Crea una nueva instancia de Solicitud con los atributos especificados.
+	 *
+	 * @param id_solicitud Identificador único de la solicitud.
+	 * @param descripcion Descripción de la solicitud.
+	 * @param estado Estado de la solicitud.
+	 * @param fch_limite Fecha límite de la solicitud.
+	 * @param user Cliente asociado a la solicitud.
+	 */
 	public Solicitud(int id_solicitud, String descripcion, boolean estado, Calendar fch_limite,Usuario user) {
 		super();
 		this.id_solicitud = id_solicitud;
@@ -118,7 +135,15 @@ public class Solicitud {
 		this.fch_limite = fch_limite;
 		this.cliente=user;
 	}
-
+	
+	/**
+	 * Crea una nueva instancia de Solicitud con los atributos especificados, excluyendo el identificador único.
+	 *
+	 * @param descripcion Descripción de la solicitud.
+	 * @param estado Estado de la solicitud.
+	 * @param fch_limite Fecha límite de la solicitud.
+	 * @param user Cliente asociado a la solicitud.
+	 */
 	public Solicitud(String descripcion, boolean estado, Calendar fch_limite,Usuario user) {
 		super();
 		this.descripcion = descripcion;

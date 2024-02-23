@@ -10,7 +10,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 /**
  * Clase de Acceso(DAO) que representa los campos de la Entidad Acceso de la base de datos 
- * @author El Equipazo de los Lentos
+ * @author Isidro Camacho Diaz
  * 
  * @param idAcceso Identificador del Objeto
  * @param codigoAcceso Codigo que identifica el Acceso

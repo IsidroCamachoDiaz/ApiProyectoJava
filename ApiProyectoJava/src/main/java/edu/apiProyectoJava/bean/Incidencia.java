@@ -18,7 +18,25 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-
+/**
+ * Clase que representa una incidencia registrada en el sistema.
+ * 
+ * Esta clase mapea la entidad 'incidencias' de la base de datos.
+ * 
+ * @author Isidro Camacho Diaz
+ * 
+ * @param id_incidencia Identificador único de la incidencia.
+ * @param descripcion_usuario Descripción de la incidencia proporcionada por el usuario.
+ * @param descripcion_tecnica Descripción técnica de la incidencia.
+ * @param horas Cantidad de horas dedicadas a resolver la incidencia.
+ * @param coste Coste asociado a la incidencia.
+ * @param estado Estado actual de la incidencia.
+ * @param fecha_inicio Fecha y hora de inicio de la incidencia.
+ * @param fecha_fin Fecha y hora de resolución de la incidencia.
+ * @param empleado Usuario asignado a la incidencia.
+ * @param solicitud Solicitud asociada a la incidencia.
+ * @param trabajosConIncidencias Lista de trabajos relacionados con esta incidencia.
+ */
 @Entity
 @Table(name="incidencias",schema="datos_puros")
 public class Incidencia {
@@ -151,11 +169,26 @@ public class Incidencia {
 
 	
 	// Constructores
-
+	
+	/**
+	 * Crea una nueva instancia de Incidencia sin inicializar sus atributos.
+	 */
 	public Incidencia() {
 		super();
 	}
-
+	
+	/**
+	 * Crea una nueva instancia de Incidencia con los atributos especificados.
+	 *
+	 * @param id_incidencia       Identificador único de la incidencia.
+	 * @param descripcion_usuario Descripción de la incidencia proporcionada por el usuario.
+	 * @param descripcion_tecnica Descripción técnica de la incidencia.
+	 * @param horas               Horas dedicadas a resolver la incidencia.
+	 * @param coste               Coste asociado a la incidencia.
+	 * @param estado              Estado de la incidencia (resuelta o no resuelta).
+	 * @param fecha_inicio        Fecha de inicio de la incidencia.
+	 * @param fecha_fin           Fecha de finalización de la incidencia.
+	 */
 	public Incidencia(int id_incidencia, String descripcion_usuario, String descripcion_tecnica, int horas,
 			float coste, boolean estado, Calendar fecha_inicio, Calendar fecha_fin) {
 		super();
@@ -168,7 +201,18 @@ public class Incidencia {
 		this.fecha_inicio = fecha_inicio;
 		this.fecha_fin = fecha_fin;
 	}
-
+	
+	/**
+	 * Crea una nueva instancia de Incidencia con los atributos especificados, excluyendo el identificador único.
+	 *
+	 * @param descripcion_usuario Descripción de la incidencia proporcionada por el usuario.
+	 * @param descripcion_tecnica Descripción técnica de la incidencia.
+	 * @param horas               Horas dedicadas a resolver la incidencia.
+	 * @param coste               Coste asociado a la incidencia.
+	 * @param estado              Estado de la incidencia (resuelta o no resuelta).
+	 * @param fecha_inicio        Fecha de inicio de la incidencia.
+	 * @param fecha_fin           Fecha de finalización de la incidencia.
+	 */
 	public Incidencia(String descripcion_usuario, String descripcion_tecnica, int horas, float coste, boolean estado,
 			Calendar fecha_inicio, Calendar fecha_fin) {
 		super();
@@ -180,7 +224,15 @@ public class Incidencia {
 		this.fecha_inicio = fecha_inicio;
 		this.fecha_fin = fecha_fin;
 	}
-
+	
+	/**
+	 * Crea una nueva instancia de Incidencia con los atributos especificados, excluyendo el identificador único
+	 * y la fecha de finalización.
+	 *
+	 * @param descripcion_usuario Descripción de la incidencia proporcionada por el usuario.
+	 * @param estado              Estado de la incidencia (resuelta o no resuelta).
+	 * @param solicitud           Solicitud asociada a la incidencia.
+	 */
 	public Incidencia(String descripcion_usuario, boolean estado, Solicitud solicitud) {
 		super();
 		this.descripcion_usuario = descripcion_usuario;

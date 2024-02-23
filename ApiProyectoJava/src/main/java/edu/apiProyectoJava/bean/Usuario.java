@@ -19,7 +19,26 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-
+/**
+ * Clase que representa a un usuario en el sistema.
+ * 
+ * Esta clase mapea la entidad 'usuarios' de la base de datos.
+ * 
+ * @author Isidro Camacho Diaz
+ * 
+ * @param id_usuario Identificador único del usuario.
+ * @param nombre Nombre del usuario.
+ * @param telefono Número de teléfono del usuario.
+ * @param correo Correo electrónico del usuario.
+ * @param contrasenia Contraseña del usuario.
+ * @param alta Indica si el usuario está activo o no.
+ * @param foto Foto del usuario en formato byte array.
+ * @param fecha_baja Fecha y hora en que el usuario fue dado de baja en el sistema.
+ * @param acceso Acceso asociado al usuario.
+ * @param tokens_usuario Lista de tokens asociados al usuario.
+ * @param solicitudes_usuario Lista de solicitudes creadas por el usuario.
+ * @param incidencias_empleado Lista de incidencias relacionadas con el usuario como empleado.
+ */
 @Entity
 @Table(name="usuarios",schema="personal_datos")
 public class Usuario {
@@ -69,7 +88,8 @@ public class Usuario {
 	@OneToMany(mappedBy="empleado")
 	@JsonIgnoreProperties(value={"empleado"},allowSetters=true)
 	private List <Incidencia> incidencias_empleado;
-
+	
+	//Geters y Seters
 	public int getId_usuario() {
 		return id_usuario;
 	}
@@ -165,7 +185,25 @@ public class Usuario {
 	public void setIncidencias_empleado(List<Incidencia> incidencias_empleado) {
 		this.incidencias_empleado = incidencias_empleado;
 	}
-
+	
+	//Constructores
+	
+	/**
+	 * Crea una nueva instancia de Usuario con los atributos especificados.
+	 *
+	 * @param id_usuario Identificador único del usuario.
+	 * @param nombre Nombre del usuario.
+	 * @param telefono Número de teléfono del usuario.
+	 * @param correo Correo electrónico del usuario.
+	 * @param contrasenia Contraseña del usuario.
+	 * @param alta Estado de alta del usuario.
+	 * @param foto Fotografía del usuario en formato byte[].
+	 * @param fecha_baja Fecha de baja del usuario.
+	 * @param acceso Acceso asociado al usuario.
+	 * @param tokens_usuario Lista de tokens asociados al usuario.
+	 * @param solicitudes_usuario Lista de solicitudes asociadas al usuario.
+	 * @param incidencias_empleado Lista de incidencias asociadas al usuario como empleado.
+	 */
 	public Usuario(int id_usuario, String nombre, String telefono, String correo, String contrasenia, boolean alta,
 			byte[] foto, Calendar fecha_baja, Acceso acceso, List<Token> tokens_usuario,
 			List<Solicitud> solicitudes_usuario, List<Incidencia> incidencias_empleado) {
@@ -184,13 +222,11 @@ public class Usuario {
 		this.incidencias_empleado = incidencias_empleado;
 	}
 
+	/**
+	 * Crea una nueva instancia de Usuario sin inicializar sus atributos.
+	 */
 	public Usuario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	//Geters y Seters	
-	
-	
 
 }

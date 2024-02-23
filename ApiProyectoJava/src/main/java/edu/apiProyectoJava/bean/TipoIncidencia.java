@@ -12,6 +12,19 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+/**
+ * Clase que representa un tipo de incidencia en el sistema.
+ * 
+ * Esta clase mapea la entidad 'tipos_incidencias' de la base de datos.
+ * 
+ * @author Isidro Camacho Diaz
+ * 
+ * @param id_tipo Identificador único del tipo de incidencia.
+ * @param descripcion_tipo Descripción del tipo de incidencia.
+ * @param precio_tipo Precio asociado al tipo de incidencia.
+ * @param fecha_fin Fecha de expiración del tipo de incidencia.
+ * @param trabajosConTipo Lista de trabajos asociados a este tipo de incidencia.
+ */
 
 @Entity
 @Table(name="tipos_incidencias",schema="datos_puros")
@@ -72,6 +85,14 @@ public class TipoIncidencia {
 	}
 	//Constructores
 	
+	/**
+	 * Crea una nueva instancia de TipoIncidencia con los atributos especificados.
+	 *
+	 * @param id_tipo Identificador único del tipo de incidencia.
+	 * @param descripcion_tipo Descripción del tipo de incidencia.
+	 * @param precio_tipo Precio asociado al tipo de incidencia.
+	 * @param fecha_fin Fecha de expiración del tipo de incidencia.
+	 */
 	public TipoIncidencia(int id_tipo, String descripcion_tipo, float precio_tipo, Calendar fecha_fin) {
 		super();
 		this.id_tipo = id_tipo;
@@ -79,12 +100,21 @@ public class TipoIncidencia {
 		this.precio_tipo = precio_tipo;
 		this.fecha_fin = fecha_fin;
 	}
-
-
+	
+	/**
+	 * Crea una nueva instancia de TipoIncidencia sin inicializar sus atributos.
+	 */
 	public TipoIncidencia() {
 		super();
 	}
-
+	
+	/**
+	 * Crea una nueva instancia de TipoIncidencia con los atributos especificados, excluyendo el identificador único.
+	 *
+	 * @param descripcion_tipo Descripción del tipo de incidencia.
+	 * @param precio_tipo Precio asociado al tipo de incidencia.
+	 * @param fecha_fin Fecha de expiración del tipo de incidencia.
+	 */
 	public TipoIncidencia(String descripcion_tipo, float precio_tipo, Calendar fecha_fin) {
 		super();
 		this.descripcion_tipo = descripcion_tipo;

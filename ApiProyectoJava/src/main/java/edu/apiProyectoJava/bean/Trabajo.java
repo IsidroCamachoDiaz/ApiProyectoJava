@@ -8,6 +8,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+/**
+ * Clase que representa un trabajo asociado a una incidencia en el sistema.
+ * 
+ * Esta clase mapea la entidad 'trabajos' de la base de datos.
+ * 
+ * @author Isidro Camacho Diaz
+ * 
+ * @param id_trabajo Identificador único del trabajo.
+ * @param descripcion Descripción del trabajo.
+ * @param estado Estado actual del trabajo.
+ * @param horas Cantidad de horas dedicadas al trabajo.
+ * @param incidencia Incidencia asociada al trabajo.
+ * @param tipoIncidencia Tipo de incidencia asociada al trabajo.
+ */
 
 @Entity
 @Table(name="trabajos",schema="datos_puros")
@@ -89,6 +103,15 @@ public class Trabajo {
 	}
 
 	//Constructores
+	
+	/**
+	 * Crea una nueva instancia de Trabajo con los atributos especificados.
+	 *
+	 * @param id_trabajo Identificador único del trabajo.
+	 * @param descripcion Descripción del trabajo.
+	 * @param estado Estado del trabajo.
+	 * @param horas Horas dedicadas al trabajo.
+	 */
 	public Trabajo(int id_trabajo, String descripcion, boolean estado, int horas) {
 		super();
 		this.id_trabajo = id_trabajo;
@@ -96,7 +119,14 @@ public class Trabajo {
 		this.estado = estado;
 		this.horas = horas;
 	}
-
+	
+	/**
+	 * Crea una nueva instancia de Trabajo con los atributos especificados, excluyendo el identificador único.
+	 *
+	 * @param descripcion Descripción del trabajo.
+	 * @param estado Estado del trabajo.
+	 * @param horas Horas dedicadas al trabajo.
+	 */
 	public Trabajo(String descripcion, boolean estado, int horas) {
 		super();
 		this.descripcion = descripcion;
@@ -104,14 +134,11 @@ public class Trabajo {
 		this.horas = horas;
 	}
 
+	/**
+	 * Crea una nueva instancia de Trabajo sin inicializar sus atributos.
+	 */
 	public Trabajo() {
 		super();
 	}
-	
-	
-
-	
-	
-	
-	
+		
 }

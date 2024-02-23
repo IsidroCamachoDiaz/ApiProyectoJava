@@ -13,6 +13,19 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
+/**
+ * Clase que representa un token de autenticación en el sistema.
+ * 
+ * Esta clase mapea la entidad 'tokens' de la base de datos.
+ * 
+ * @author Isidro Camacho Diaz
+ * 
+ * @param idToken Identificador único del token.
+ * @param token Valor del token.
+ * @param fch_limite Fecha límite de validez del token.
+ * @param usuario Usuario asociado al token.
+ */
+
 @Entity
 @Table(name="tokens",schema="personal_datos")
 public class Token {
@@ -71,10 +84,21 @@ public class Token {
 	}
 	
 	// CONSTRUTORES
+	
+	/**
+	 * Crea una nueva instancia de Token sin inicializar sus atributos.
+	 */
 	public Token() {
 		super();
 	}
-
+	
+	/**
+	 * Crea una nueva instancia de Token con los atributos especificados.
+	 *
+	 * @param token El token asociado.
+	 * @param fch_limite La fecha límite del token.
+	 * @param id_usuario El usuario asociado al token.
+	 */
 	public Token(String token, Calendar fch_limite,Usuario id_usuario) {
 		super();
 		this.token = token;

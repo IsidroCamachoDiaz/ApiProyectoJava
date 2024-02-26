@@ -63,7 +63,6 @@ public class SolicitudController {
 	 */
 	@PostMapping("/Insertar")
 	public void insertarSolicitud(@RequestBody Solicitud solicitud) {
-		//solicitud.getIncidencia().setSolicitud(solicitud);
 	    this.solicitudRepositorio.save(solicitud);
 	    Incidencia incidencia= new Incidencia(solicitud.getDescripcion(),false,solicitud);
 	    this.incidenciaRepositorio.save(incidencia);

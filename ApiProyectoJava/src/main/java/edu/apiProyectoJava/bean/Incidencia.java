@@ -78,7 +78,6 @@ public class Incidencia {
 	
 	@OneToOne
 	@JoinColumn(name="id_solicitud")
-	//@JsonIgnoreProperties(value={"incidencia"},allowSetters=true)
 	private Solicitud solicitud;
 	
 	 @OneToMany(mappedBy="incidencia")

@@ -63,10 +63,6 @@ public class Solicitud {
 	@JsonIgnoreProperties(value={"solicitudes_usuario"},allowSetters=true)
 	private Usuario cliente;
 	
-	/*@OneToOne(mappedBy="solicitud", cascade = CascadeType.ALL)
-	@JoinColumn(name="id_incidencia")
-	@JsonIgnoreProperties(value={"solicitud"},allowSetters=true)
-	private Incidencia incidencia;*/
 
 	//Geters y Seters
 	public long getId_solicitud() {

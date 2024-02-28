@@ -74,6 +74,15 @@ public class UsuarioController {
 	}
 	
 	/**
+	 * Inserta un Usuario como administrador por el metodo POST
+	 * @param Usuario Objetos Usuario
+	 */
+	@PostMapping("/InsertarAdministrador")
+	public void insertarUsuarioEnAdministrador(@RequestBody Usuario usuario) {
+		this.usuarioRepositorio.save(usuario);
+	}
+	
+	/**
 	 * Actualiza un Usuario en concreto por el id mediante el metodo PUST
 	 * @param id Variable por el cual identificaremos el Usuario
 	 * @param Usuario usuario
